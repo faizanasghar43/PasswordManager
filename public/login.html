@@ -18,21 +18,21 @@
 <div id="registerSuccessMessage" class="alert alert-success" style="display: none;">
     <strong>Success!</strong> <strong>Login successful.</strong>
 </div>
-    <div class="main">
-        <h1>Login</h1>
-        <form id="loginForm">
-            <div class="lgn input-field">
-                <input class="login-cred" type="text" placeholder="Username" id="username" required>
-                <input class="login-cred" type="password" placeholder="Password" id="password" required>
-            </div>
-            <div class="lgn input-buttons">
-                <input class="btn login" type="button" value="Login" onclick="loginUser()">
-                <a class="btn sign-up link-button" href="register.html">Sign-up</a>
-            </div>
-        </form>
-    </div>
+<div class="main">
+    <h1>Login</h1>
+    <form id="loginForm">
+        <div class="lgn input-field">
+            <input class="login-cred" type="text" placeholder="Username" id="username" required>
+            <input class="login-cred" type="password" placeholder="Password" id="password" required>
+        </div>
+        <div class="lgn input-buttons">
+            <input class="btn login" type="button" value="Login" onclick="loginUser()">
+            <a class="btn sign-up link-button" href="register.html">Sign-up</a>
+        </div>
+    </form>
+</div>
 
-    <script>
+<script>
     async function loginUser() {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
@@ -43,13 +43,13 @@
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ username, password }),
+                body: JSON.stringify({username, password}),
             });
 
             if (response.ok) {
                 const responseData = await response.json();
                 localStorage.setItem('token', responseData.token);
-              document.getElementById('registerSuccessMessage').style.display = 'block';
+                document.getElementById('registerSuccessMessage').style.display = 'block';
                 window.location.href = 'password-view.html'; // Redirect to the password view page
             } else {
                 alert('Invalid username or password');
@@ -59,6 +59,6 @@
             alert('Login failed');
         }
     }
-    </script>
+</script>
 </body>
 </html>
